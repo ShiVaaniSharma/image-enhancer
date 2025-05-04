@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Image Enhancer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Client-Side Image Enhancer</h1>
+    <p class="subtitle">Adjust brightness, contrast, saturation, and sharpness for a clearer, more vibrant look.</p>
+
+    <div class="container">
+        <div class="upload-area" id="uploadArea">
+            <p>Drag & Drop Image Here</p>
+            <p>or</p>
+            <button id="browseButton">Browse Files</button>
+            <p>or</p>
+            <p>Paste Image (Ctrl+V / Cmd+V)</p>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+        </div>
+
+        <div class="editor" id="editor" style="display: none;">
+            <div class="image-preview">
+                <div class="panel">
+                    <h2>Original</h2>
+                    <img id="originalPreview" alt="Original Image Preview">
+                </div>
+                <div class="panel">
+                    <h2>Enhanced</h2>
+                    <canvas id="canvas"></canvas>
+                    <p class="processing-note">Note: Enhancement is client-side adjustment, not AI upscaling.</p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <h2>Adjustments <span class="tooltip" title="Use Sharpness and Contrast to improve text clarity.">[?]</span></h2>
+                <div class="control-group">
+                    <label for="brightness">Brightness:</label>
+                    <input type="range" id="brightness" min="0" max="200" value="100">
+                    <span id="brightnessValue">100%</span>
+                </div>
+                <div class="control-group">
+                    <label for="contrast">Contrast:</label>
+                    <input type="range" id="contrast" min="0" max="200" value="100">
+                    <span id="contrastValue">100%</span>
+                </div>
+                <div class="control-group">
+                    <label for="saturation">Saturation:</label>
+                    <input type="range" id="saturation" min="0" max="300" value="100">
+                    <span id="saturationValue">100%</span>
+                </div>
+                 <div class="control-group">
+                    <label for="sharpness">Sharpness:</label>
+                    <input type="range" id="sharpness" min="0" max="100" value="0">
+                     <span id="sharpnessValue">0%</span>
+                </div>
+                 <div class="control-group action-buttons"> <!-- Group buttons -->
+                    <button id="resetButton">Reset Adjustments</button>
+                    <button id="loadNewButton">Load New Image</button> <!-- New Button -->
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h2>Download Enhanced Image</h2>
+                <label for="formatSelect">Format:</label>
+                <select id="formatSelect">
+                    <option value="image/png">PNG</option>
+                    <option value="image/jpeg">JPEG</option>
+                    <option value="image/webp">WebP</option>
+                </select>
+                 <label for="qualityRange" id="qualityLabel" style="display:none;">Quality:</label>
+                 <input type="range" id="qualityRange" min="0.1" max="1.0" step="0.1" value="0.9" style="display:none;">
+                 <span id="qualityValue" style="display:none;">0.9</span>
+
+                <button id="downloadButton">Download</button>
+            </div>
+        </div>
+         <p id="status" class="status-message"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

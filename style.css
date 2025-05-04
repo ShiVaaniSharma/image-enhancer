@@ -1,0 +1,344 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f4f7f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    color: #444;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 5px; /* Reduce space below main title */
+}
+
+.subtitle {
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 0.95em;
+    max-width: 600px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    width: 95%;
+    max-width: 1100px; /* Wider for better preview layout */
+    box-sizing: border-box;
+}
+
+.upload-area {
+    border: 3px dashed #cdddeb;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    margin-bottom: 20px;
+    background-color: #f8fafd;
+}
+
+.upload-area.dragover {
+    background-color: #eef4fc;
+    border-color: #a8c7e6;
+}
+
+.upload-area p {
+    margin: 12px 0;
+    color: #557;
+    font-size: 1.05em;
+}
+
+#browseButton {
+    padding: 10px 22px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    margin: 5px 0;
+}
+
+#browseButton:hover {
+    background-color: #0056b3;
+}
+
+.editor {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Spacing between sections */
+}
+
+.image-preview {
+    display: flex;
+    justify-content: space-around; /* Distribute space */
+    align-items: flex-start; /* Align tops */
+    gap: 25px; /* Space between original and enhanced */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+}
+
+.panel {
+    flex: 1; /* Allow panels to grow */
+    min-width: 280px; /* Minimum width before wrapping */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.panel h2 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #555;
+}
+
+#originalPreview,
+#canvas {
+    max-width: 100%; /* Responsive images */
+    height: auto;
+    border: 1px solid #ddd;
+    background-color: #fdfdfd;
+    display: block; /* Remove extra space below image/canvas */
+    margin: 0 auto; /* Center if smaller than panel */
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.panel .processing-note {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 10px;
+}
+
+
+.controls {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.controls h2 {
+     margin-bottom: 20px;
+     font-size: 1.3em;
+     text-align: left;
+}
+
+.controls h2 .tooltip {
+    font-size: 0.8em;
+    color: #0069d9;
+    cursor: help;
+    border: 1px solid #0069d9;
+    border-radius: 50%;
+    padding: 0px 6px;
+    display: inline-block;
+    line-height: 1.1;
+    margin-left: 8px;
+    font-weight: normal;
+    background-color: #e7f3ff;
+}
+
+
+.control-group {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between label, input, value */
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
+.control-group label {
+    min-width: 90px; /* Align labels */
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.control-group input[type="range"] {
+    flex-grow: 1; /* Allow slider to take available space */
+    cursor: pointer;
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 3px;
+    appearance: none; /* Override default look */
+    outline: none;
+}
+/* Style range thumb for Chrome/Safari/Edge */
+.control-group input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+/* Style range thumb for Firefox */
+.control-group input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+
+.control-group span {
+    min-width: 45px; /* Space for percentage value */
+    text-align: right;
+    font-family: monospace;
+    font-size: 0.95em;
+    color: #0056b3;
+    background-color: #f0f6ff;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.control-group.action-buttons {
+    margin-top: 25px; /* Add some space above buttons */
+    justify-content: flex-start; /* Align buttons to the start */
+    gap: 15px;
+}
+
+#resetButton,
+#loadNewButton {
+    padding: 9px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#resetButton {
+    background-color: #ffc107;
+    color: #333;
+}
+
+#resetButton:hover {
+    background-color: #e0a800;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#loadNewButton {
+    background-color: #6c757d;
+    color: white;
+}
+
+#loadNewButton:hover {
+    background-color: #5a6268;
+     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+.download-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-top: 15px; /* Add space after controls */
+}
+
+.download-section h2 {
+    width: 100%; /* Make title take full width */
+    margin-bottom: 15px;
+    font-size: 1.3em;
+     text-align: left;
+}
+
+.download-section label {
+    font-weight: 500;
+    color: #555;
+}
+
+#formatSelect {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+#qualityRange {
+    width: 120px; /* Adjust as needed */
+    vertical-align: middle; /* Align with labels */
+}
+#qualityValue {
+     font-family: monospace;
+     font-size: 0.9em;
+     color: #555;
+}
+
+#downloadButton {
+    padding: 11px 25px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    margin-left: auto; /* Push download button to the right */
+}
+
+#downloadButton:hover {
+    background-color: #218838;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.status-message {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 500;
+    height: 1.5em; /* Reserve space to prevent layout shifts */
+    font-size: 0.95em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .image-preview {
+        flex-direction: column;
+        align-items: center;
+    }
+    .panel {
+        width: 100%;
+        max-width: 400px; /* Limit preview size on mobile */
+    }
+    .control-group label {
+        min-width: 80px; /* Slightly smaller label width */
+    }
+    .download-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #downloadButton {
+        margin-left: 0; /* Align left on smaller screens */
+        width: 100%;
+        margin-top: 15px;
+    }
+    .controls h2, .download-section h2 {
+        font-size: 1.2em;
+        text-align: center;
+    }
+     .control-group.action-buttons {
+        justify-content: center;
+     }
+}
