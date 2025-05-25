@@ -17,7 +17,7 @@ h1, h2 {
 }
 
 h1 {
-    margin-bottom: 5px; /* Reduce space below main title */
+    margin-bottom: 5px; 
 }
 
 .subtitle {
@@ -35,7 +35,7 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     width: 95%;
-    max-width: 1100px; /* Wider for better preview layout */
+    max-width: 1100px;
     box-sizing: border-box;
 }
 
@@ -81,13 +81,13 @@ h1 {
 .editor {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Spacing between sections */
+    gap: 30px; 
 }
 
 .image-preview {
     display: flex;
-    justify-content: space-around; /* Distribute space */
-    align-items: flex-start; /* Align tops */
+    justify-content: space-around; 
+    align-items: flex-start; 
     gap: 25px; /* Space between original and enhanced */
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
     border-bottom: 1px solid #eee;
@@ -95,8 +95,8 @@ h1 {
 }
 
 .panel {
-    flex: 1; /* Allow panels to grow */
-    min-width: 280px; /* Minimum width before wrapping */
+    flex: 1; 
+    min-width: 280px; 
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -111,7 +111,7 @@ h1 {
 
 #originalPreview,
 #canvas {
-    max-width: 100%; /* Responsive images */
+    max-width: 100%;
     height: auto;
     border: 1px solid #ddd;
     background-color: #fdfdfd;
